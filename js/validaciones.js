@@ -1,7 +1,8 @@
+// Validaciones para el formulario de contacto
 function validarFormularioContacto(nombre, email, mensaje) {
     let esValido = true;
     
-    // Validar nombre 
+    // Validar nombre (no vacío, al menos 3 caracteres, solo letras y espacios)
     if (!nombre || nombre.trim().length < 3) {
         mostrarError('error-nombre', 'El nombre debe tener al menos 3 caracteres');
         esValido = false;
@@ -12,7 +13,7 @@ function validarFormularioContacto(nombre, email, mensaje) {
         limpiarError('error-nombre');
     }
     
-    // Validar email 
+    // Validar email (formato válido)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
         mostrarError('error-email', 'Ingresa un email válido (ejemplo@dominio.com)');
@@ -21,7 +22,7 @@ function validarFormularioContacto(nombre, email, mensaje) {
         limpiarError('error-email');
     }
     
-    // Validar mensaje 
+    // Validar mensaje (no vacío, al menos 10 caracteres)
     if (!mensaje || mensaje.trim().length < 10) {
         mostrarError('error-mensaje', 'El mensaje debe tener al menos 10 caracteres');
         esValido = false;
@@ -41,7 +42,7 @@ function mostrarError(elementoId, mensaje) {
         elemento.textContent = mensaje;
         elemento.style.display = 'block';
         
-        
+        // Agregar clase de error al campo correspondiente
         const campo = elemento.closest('.campo');
         if (campo) {
             const input = campo.querySelector('input, textarea');
@@ -58,7 +59,7 @@ function limpiarError(elementoId) {
         elemento.textContent = '';
         elemento.style.display = 'none';
         
-       
+        // Quitar clase de error del campo correspondiente
         const campo = elemento.closest('.campo');
         if (campo) {
             const input = campo.querySelector('input, textarea');
@@ -79,7 +80,7 @@ function limpiarFormularioContacto() {
         limpiarError('error-email');
         limpiarError('error-mensaje');
         
-        // Se mostrara un mensaje de éxito
+        // Mostrar mensaje de éxito
         mostrarMensajeExito('¡Mensaje enviado con éxito! Te contactaremos pronto.');
     }
 }
@@ -93,7 +94,7 @@ function mostrarMensajeExito(mensaje) {
             mensajeAnterior.remove();
         }
         
-        // Se creara un nuevo mensaje de éxito
+        // Crear nuevo mensaje de éxito
         const mensajeExito = document.createElement('div');
         mensajeExito.className = 'mensaje-exito';
         mensajeExito.style.cssText = `
@@ -109,7 +110,7 @@ function mostrarMensajeExito(mensaje) {
         
         form.appendChild(mensajeExito);
         
-        // Se ocultar mensaje después de 5 segundos
+        // Ocultar mensaje después de 5 segundos
         setTimeout(() => {
             if (mensajeExito) {
                 mensajeExito.style.opacity = '0';
@@ -121,7 +122,7 @@ function mostrarMensajeExito(mensaje) {
     }
 }
 
-
+// Validación en tiempo real para los campos del formulario
 function configurarValidacionTiempoReal() {
     const nombreInput = document.getElementById('nombre');
     const emailInput = document.getElementById('email');
