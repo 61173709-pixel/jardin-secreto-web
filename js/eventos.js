@@ -1,4 +1,3 @@
-// Manejo de eventos globales
 function inicializarEventos() {
     // Evento para el formulario de contacto
     const formContacto = document.getElementById('contactoForm');
@@ -40,7 +39,7 @@ function inicializarEventos() {
     // Efecto de scroll suave para enlaces internos
     configurarScrollSuave();
     
-    // Cargar vista del carrito si estamos en la página de carrito
+    // Se cargara la vista del carrito si estamos en la página de carrito
     if (document.getElementById('items-carrito')) {
         actualizarVistaCarrito();
     }

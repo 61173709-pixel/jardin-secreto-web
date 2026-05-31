@@ -1,4 +1,3 @@
-// Punto de entrada principal de la aplicación
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🌿 Jardín Secreto - Inicializando aplicación...');
     
