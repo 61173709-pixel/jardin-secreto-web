@@ -1,3 +1,4 @@
+// Funciones creativas e interactivas adicionales
 function inicializarEfectosCreativos() {
     agregarEfectoTarjetas();
     agregarAnimacionCarga();
